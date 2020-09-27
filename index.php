@@ -9,19 +9,54 @@
   </head>
   <body>
 
+
+
+
+
+
   <header class="nav">
     <ul class="ull">
-      <li class="lii"><a href="index.php">News</a></li>
+      <li class="lii"><a href="index.php">Campus News Portal</a></li>
       <li class="lii"><a class="active" href="index.php">Home</a></li>
       <li class="lii"><a href="admin_login.php">Admin</a></li>
       <li class="lii"><a href="reporter_login.php">Reporter</a></li>
       <li class="lii"><a href="login.php">User</a></li>
+      <li class="lii">
+
+        <a href="logout.php">
+
+          <?php
+            session_start();
+            if(isset($_SESSION["username"])){
+              echo "Logout";
+
+                }
+
+          ?>
+        </a>
+
+
+      </li>
+
+
     </ul>
 
     </header>
 
     <main class="main">
-    <h1>Homepage</h1>
+    <h1>Campus News Portal</h1>
+
+
+    <?php
+      //session_start();
+      if(isset($_SESSION["username"])){
+        include 'search.php';
+
+          }
+
+    ?>
+
+
 
       <ul class="news">
 
@@ -58,7 +93,7 @@
 
 
 <?php
-include 'connection.php'
+
 
 
 

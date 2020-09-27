@@ -5,13 +5,14 @@
     <title> Login User</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/nav.css">
   </head>
   <body>
 
-  <div class="nav"> nav </div>
-  
 
-        
+
+
+
   <main class="main">
 
   <div class="login">
@@ -24,7 +25,7 @@
         Password: <input type="password" name="password" value="" required placeholder="Type Password"> <br>
         <input class="button" type="submit" value="submit">
         <a href="retrieve_pass.php">Forgot password?</a>
-          <a href="signup.php">If already signed up Login here</a>
+          <a href="signup.php">If you don't  signed up yet  signup here</a>
 
       </form>
 
@@ -32,12 +33,20 @@
 </div>
 </main>
 
-<div class="footer"><h1>Footer</h1></div>
+
   </body>
 </html>
 
 <?php
 include 'connection.php';
+session_start();
+if(isset($_SESSION["username"])){
+ header('Location:index.php');
+}
+else {
+  // code...
+
+
 
 $name = $username = $password = $id = "";
 
@@ -45,6 +54,10 @@ $username = $_GET["username"];
 echo $username;
 $password = $_GET["password"];
 echo $password;
+
+
+$_SESSION["username"]= $username;
+echo $_SESSION['username'];
 
 
 
@@ -58,12 +71,21 @@ if(mysqli_num_rows($result) > 0){
 
   echo "good";
   //header('Location:home.php');
+  session_start();
+  $_SESSION["username"]= $username;
+ echo $_SESSION['username'];
+
+  if(isset($_SESSION["username"])){
+   header('Location:index.php');
+  }
+
 }
 else {
   echo "No User registered";
   echo "Please Sign Up";
   //header('Location:signup.php');
 
+}
 }
 
 

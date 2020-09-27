@@ -6,6 +6,7 @@
     <title>Reporter Login</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/login.css">
+
   </head>
   <body>
     <header class="nav"></header>
@@ -40,6 +41,9 @@
 include 'connection.php';
 
 
+//session_start();
+
+  // code...
 
 
 $rname = $rusername = $password = $id = "";
@@ -72,7 +76,7 @@ if(mysqli_num_rows($result) > 0){
 else {
   echo "No User registered";
   echo "Please Sign Up";
-  header('Location:reporter_login.php');
+  //header('Location:reporter_signup.php');
 
 }
 

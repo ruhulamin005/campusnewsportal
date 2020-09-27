@@ -12,6 +12,24 @@
       <ul class="ull">
         <li class="lii"><a href="index.php">News</a></li>
         <li class="lii"><a class="active" href="index.php">Home</a></li>
+        <li class="lii"><a class="" href="reporter_login.php">Reporter</a></li>
+
+        <li class="lii">
+
+          <a href="logout.php">
+
+            <?php
+              session_start();
+              if(isset($_SESSION["rusername"])){
+                echo "Logout";
+
+                  }
+
+            ?>
+          </a>
+
+
+        </li>
 
       </ul>
 

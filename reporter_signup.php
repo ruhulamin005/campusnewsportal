@@ -24,7 +24,7 @@
     <div class="login">
       <h1>Reporter Signup</h1>
       <div class="container" id="container">
-        <form class="" action="reporter_signup.php" method="get">
+        <form class="" action="reporter_signup.php" method="get"  onsubmit="return validate()">
 
 
 

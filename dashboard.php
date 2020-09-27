@@ -16,8 +16,24 @@
         <li class="lii"><a href="index.php">News</a></li>
         <li class="lii"><a class="active" href="index.php">Home</a></li>
         <li class="lii"><a href="admin_login.php">Admin</a></li>
-        <li class="lii"><a href="reporter_login.php">Reporter</a></li>
-        <li class="lii"><a href="login.php">User</a></li>
+        <li class="lii">
+
+          <a href="logout.php">
+
+            <?php
+              session_start();
+              if(isset($_SESSION["admin_username"])){
+                echo "Logout";
+
+                  }
+
+            ?>
+          </a>
+
+
+        </li>
+
+
       </ul>
 
 
@@ -50,18 +66,14 @@
       <table>
         <div>
         <tr>
-          <th>Post_ID</th>
+          <th>News ID</th>
           <th>Title</th>
           <th>Description</th>
           <th>Reporter_Id</th>
           <th>
             Status
           </th>
-          <th>
 
-            Delete
-
-          </th>
         </tr>
 
         <?php

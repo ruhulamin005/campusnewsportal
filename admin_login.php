@@ -38,6 +38,14 @@
 <?php
 
 include 'connection.php';
+session_start();
+if(isset($_SESSION["admin_username"])){
+ header('Location:dashboard.php');
+}
+else {
+  // code...
+
+
 
 $admin_username = $_GET["admin_username"];
 //echo "$admin_username";
@@ -60,7 +68,7 @@ if(mysqli_num_rows($result) > 0){
 
   echo "good";
 
-  
+
 
       header('Location:dashboard.php');
 
@@ -71,5 +79,6 @@ else {
   echo "Incorrect Info";
 
 
+}
 }
  ?>
