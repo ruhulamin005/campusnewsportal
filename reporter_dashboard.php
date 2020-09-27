@@ -2,33 +2,57 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/nav.css">
     <title></title>
   </head>
   <body>
+    <header class="nav">
+      <ul class="ull">
+        <li class="lii"><a href="index.php">News</a></li>
+        <li class="lii"><a class="active" href="index.php">Home</a></li>
 
-    <h1>Reporter Dashboard</h1>
+      </ul>
 
-    <a href="mynews.php">My News</a>
-    <a href="logout.php">Logout</a>
-    <h2>Add News</h2>
-    <form class="" action="reporter_dashboard.php" method="get">
-<h3>
-    News Title: <br>
+      </header>
 
-        <input type="text" name="title" value="" placeholder="Type news title"> <br>
-    News Details:<br>
 
-        <input type="text" name="description" value="" placeholder="Type News in detail"> <br>
-</h3>
+    <main class="main">
 
-      <input type="submit" name="submit" value="--Submit--">
-</form>
+      <h1>Reporter Dashboard</h1>
+
+      <a href="mynews.php">My News</a>
+      <a href="logout.php">Logout</a>
+      <h2>Add News</h2>
+      <form class="container" action="reporter_dashboard.php" method="get">
+      <h3>
+      News Title: <br>
+
+          <input type="text" name="title" value="" placeholder="Type news title"> <br>
+      News Details:<br>
+
+          <input type="text" name="description" value="" placeholder="Type News in detail"> <br>
+      </h3>
+
+        <input type="submit" name="submit" value="--Submit--">
+      </form>
+
+    </main>
+
+
+    <footer class="footer">
+
+    </footer>
+
   </body>
 </html>
 
 
 <?php
 session_start();
+
+if(isset($_SESSION["rusername"])){
 include 'connection.php';
 
 $post_id = $title = $description = $reporter_id = $newstime = "";
@@ -63,7 +87,14 @@ $result = mysqli_query($conn, $sql);
 
 
 
-echo "Submissted Successfully";
+echo "Submited Successfully";
+}
+else {
+
+  header('Location:reporter_login.php');
+
+
+}
 
 
 

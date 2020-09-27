@@ -4,67 +4,92 @@
     <meta charset="utf-8">
     <title>Dashboard</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/table.css">
+
   </head>
   <body>
+    <header class="nav">
+      <ul class="ull">
+        <li class="lii"><a href="index.php">News</a></li>
+        <li class="lii"><a class="active" href="index.php">Home</a></li>
+        <li class="lii"><a href="admin_login.php">Admin</a></li>
+        <li class="lii"><a href="reporter_login.php">Reporter</a></li>
+        <li class="lii"><a href="login.php">User</a></li>
+      </ul>
 
-    <h1>Admin Dashboard</h1>
 
-    <h3>Approve or Delete  Post By their id</h3>
+    <main class="main">
 
-    <form class="" action="approve.php" method="get">
+      <h1>Admin Dashboard</h1>
 
-      News Id: <input type="text" name="post_id"required placeholder="News Id" value="">
-      <input type="submit" name="approve" value="Approve">
+      <h3>Approve or Delete  Post By their id</h3>
 
-      <br>
+      <div class="login " >
+        <div class="container">
+      <form class="" action="approve.php" method="get">
+
+        News Id: <input type="text" name="post_id"required placeholder="News Id" value="">
+        <input class="button" type="submit" name="approve" value="Approve">
+
+        <br>
+        </form>
+        <form class="" action="delete.php" method="get">
+        <br>
+
+        News Id: <input type="text" name="post_id"required placeholder="News Id" value="">
+        <input class="button" type="submit" name="delete" value="Delete">
+
       </form>
-      <form class="" action="delete.php" method="get">
-      <br>
-
-      News Id: <input type="text" name="post_id"required placeholder="News Id" value="">
-      <input type="submit" name="delete" value="Delete">
-
-    </form>
+</div>
+</div>
 
 
+      <table>
+        <div>
+        <tr>
+          <th>Post_ID</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Reporter_Id</th>
+          <th>
+            Status
+          </th>
+          <th>
 
-    <table>
-      <tr>
-        <th>Post_ID</th>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Reporter Id</th>
-        <th>
-          Status
-        </th>
-        <th>
+            Delete
 
-          Delete
+          </th>
+        </tr>
 
-        </th>
-      </tr>
+        <?php
+          include 'connection.php';
+          $sql = "SELECT post_id,title,  description, reporter_id, isApproved FROM post WHERE isApproved='0' ";
+          $result = $conn ->query($sql);
 
-      <?php
-        include 'connection.php';
-        $sql = "SELECT post_id,title,  description, reporter_id, isApproved FROM post WHERE isApproved='0' ";
-        $result = $conn ->query($sql);
+          if($result -> num_rows>0){
+            while ($row = $result-> fetch_assoc()) {
+                    echo "<tr><td>".$row["post_id"]."</td><td>".$row["title"]."</td><td>".$row["description"]."</td><td>".$row["reporter_id"]."</td><td>".$row["isApproved"]."</td>" ;
+            }
 
-        if($result -> num_rows>0){
-          while ($row = $result-> fetch_assoc()) {
-                  echo "<tr><td>".$row["post_id"]."</td><td>".$row["title"]."</td><td>".$row["description"]."</td><td>".$row["reporter_id"]."</td><td>".$row["isApproved"]."</td>" ;
           }
 
-        }
 
 
 
+        ?>
+        </div>
+      </table>
 
-       ?>
-    </table>
+
+    </main>
 
 
+    <footer class="footer">
 
+    </footer>
 
 
 
