@@ -10,7 +10,22 @@
 
     <h1>Admin Dashboard</h1>
 
-    <h3>Approve Post By the id</h3>
+    <h3>Approve or Delete  Post By their id</h3>
+
+    <form class="" action="approve.php" method="get">
+
+      News Id: <input type="text" name="post_id"required placeholder="News Id" value="">
+      <input type="submit" name="approve" value="Approve">
+
+      <br>
+      </form>
+      <form class="" action="delete.php" method="get">
+      <br>
+
+      News Id: <input type="text" name="post_id"required placeholder="News Id" value="">
+      <input type="submit" name="delete" value="Delete">
+
+    </form>
 
 
 
